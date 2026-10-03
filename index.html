@@ -1,0 +1,1536 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#08090e">
+<title>Happy Teacher's Day | GROUP 1 — M2 SECTION</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<style>
+:root {
+  --bg: #08090e;
+  --bg2: #10111a;
+  --gold: #e9c477;
+  --gold2: #b88a42;
+  --white: #f6f1e8;
+  --muted: #aaa7a1;
+  --purple: #9e86d9;
+  --line: rgba(233,196,119,.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 15% 15%,rgba(72,54,103,.13),transparent 42%),
+    radial-gradient(ellipse at 85% 60%,rgba(147,105,45,.09),transparent 42%),
+    linear-gradient(145deg,#08090e,#0b0c14 55%,#08090e);
+}
+
+::selection {
+  background: var(--gold);
+  color: #08090e;
+}
+
+button {
+  font: inherit;
+}
+
+section {
+  position: relative;
+}
+
+.container {
+  width: min(1100px,88%);
+  margin: auto;
+}
+
+.gold {
+  color: var(--gold);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--gold);
+  font-size: .68rem;
+  letter-spacing: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.eyebrow::before,
+.eyebrow::after {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: var(--gold2);
+}
+
+.section-heading {
+  font-family: 'Cormorant Garamond',serif;
+  font-size: clamp(2.7rem,6vw,5rem);
+  font-weight: 500;
+  line-height: 1.05;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.section-sub {
+  color: var(--muted);
+  text-align: center;
+  max-width: 590px;
+  margin: 0 auto;
+  font-size: .95rem;
+  line-height: 1.9;
+}
+
+.gold-line {
+  height: 1px;
+  width: 65px;
+  background: linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin: 24px auto;
+}
+
+/* BACKGROUND PARTICLES */
+
+#particles {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.cursor-glow {
+  position: fixed;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle,rgba(221,177,98,.075),transparent 70%);
+  transform: translate(-50%,-50%);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+}
+
+/* HERO */
+
+#hero {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 20px 80px;
+  overflow: hidden;
+}
+
+.hero-orb {
+  position: absolute;
+  width: min(650px,90vw);
+  aspect-ratio: 1;
+  border: 1px solid rgba(233,196,119,.07);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  box-shadow: 0 0 100px rgba(233,196,119,.025),
+              inset 0 0 100px rgba(150,112,205,.025);
+  pointer-events: none;
+}
+
+.hero-orb::before,
+.hero-orb::after {
+  content: "";
+  position: absolute;
+  border: 1px solid rgba(233,196,119,.06);
+  border-radius: 50%;
+  inset: 9%;
+}
+
+.hero-orb::after {
+  inset: 19%;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+.hero-label {
+  color: var(--gold);
+  font-size: .68rem;
+  letter-spacing: 5px;
+  font-weight: 600;
+  margin-bottom: 35px;
+  opacity: 0;
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond',serif;
+  font-size: clamp(4rem,10.5vw,9.3rem);
+  line-height: .94;
+  font-weight: 500;
+  letter-spacing: -3px;
+  color: var(--white);
+  text-shadow: 0 0 40px rgba(233,196,119,.12);
+}
+
+.hero-title .gold {
+  font-style: italic;
+}
+
+.cursor {
+  display: inline-block;
+  color: var(--gold);
+  animation: blink .75s steps(2,start) infinite;
+  font-weight: 300;
+}
+
+@keyframes blink {
+  to { visibility: hidden; }
+}
+
+.hero-description {
+  max-width: 570px;
+  margin: 28px auto 0;
+  color: #b8b4b0;
+  font-size: clamp(.95rem,2vw,1.12rem);
+  line-height: 1.9;
+  opacity: 0;
+  transform: translateY(15px);
+}
+
+.hero-from {
+  color: var(--gold);
+  font-size: .72rem;
+  letter-spacing: 4px;
+  margin-top: 23px;
+  opacity: 0;
+}
+
+.primary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 37px;
+  padding: 16px 30px;
+  border: 1px solid rgba(233,196,119,.65);
+  background: linear-gradient(120deg,rgba(233,196,119,.16),rgba(184,138,66,.07));
+  color: var(--gold);
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: 1.3px;
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform .3s,box-shadow .3s,background .3s;
+  opacity: 0;
+}
+
+.primary-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg,transparent,rgba(255,255,255,.13),transparent);
+  transform: translateX(-120%);
+  transition: transform .65s;
+}
+
+.primary-btn:hover::before {
+  transform: translateX(120%);
+}
+
+.primary-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 35px rgba(233,196,119,.13);
+  background: rgba(233,196,119,.15);
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(233,196,119,.6);
+  font-size: .62rem;
+  letter-spacing: 3px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+  animation: bounce 2s infinite;
+}
+
+.scroll-indicator span:last-child {
+  font-size: 1.2rem;
+}
+
+@keyframes bounce {
+  0%,100% { translate: 0 0; }
+  50% { translate: 0 8px; }
+}
+
+/* APPRECIATION */
+
+#appreciation {
+  padding: 130px 0 120px;
+}
+
+.message-card {
+  max-width: 850px;
+  margin: 60px auto 0;
+  padding: clamp(30px,6vw,68px);
+  border: 1px solid rgba(233,196,119,.23);
+  background: linear-gradient(135deg,rgba(255,255,255,.045),rgba(255,255,255,.012));
+  border-radius: 8px;
+  box-shadow: 0 20px 90px rgba(0,0,0,.25),
+              inset 0 0 50px rgba(233,196,119,.018);
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.message-card::before {
+  content: "";
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: rgba(233,196,119,.07);
+  filter: blur(75px);
+  right: -120px;
+  top: -140px;
+  pointer-events: none;
+}
+
+.card-corner {
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  border-color: var(--gold2);
+  opacity: .65;
+}
+
+.card-corner.tl {
+  top: 12px;
+  left: 12px;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+
+.card-corner.tr {
+  top: 12px;
+  right: 12px;
+  border-top: 1px solid;
+  border-right: 1px solid;
+}
+
+.card-corner.bl {
+  bottom: 12px;
+  left: 12px;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+}
+
+.card-corner.br {
+  bottom: 12px;
+  right: 12px;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+}
+
+.letter-icon {
+  font-size: 2rem;
+  margin-bottom: 22px;
+  display: block;
+}
+
+.letter-title {
+  font-family: 'Cormorant Garamond',serif;
+  font-size: 2rem;
+  color: var(--gold);
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.letter-paragraph {
+  color: #c1bdb8;
+  font-size: clamp(.92rem,1.7vw,1.03rem);
+  line-height: 2.05;
+  margin: 0 0 20px;
+}
+
+.letter-sign {
+  color: var(--gold);
+  font-family: 'Cormorant Garamond',serif;
+  font-size: 1.5rem;
+  font-style: italic;
+  margin-top: 28px;
+}
+
+/* APPRECIATION CARDS */
+
+#values {
+  padding: 100px 0 140px;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 22px;
+  margin-top: 65px;
+}
+
+.value-card {
+  position: relative;
+  text-align: center;
+  padding: 45px 28px 42px;
+  border: 1px solid rgba(233,196,119,.13);
+  border-radius: 6px;
+  background: linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.008));
+  transition: border-color .4s,background .4s,box-shadow .4s;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.value-card::after {
+  content: "";
+  position: absolute;
+  left: 20%;
+  right: 20%;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg,transparent,var(--gold),transparent);
+  transform: scaleX(0);
+  transition: transform .5s;
+}
+
+.value-card:hover {
+  border-color: rgba(233,196,119,.55);
+  background: linear-gradient(145deg,rgba(233,196,119,.075),rgba(255,255,255,.015));
+  box-shadow: 0 15px 55px rgba(0,0,0,.3),
+              0 0 35px rgba(233,196,119,.05);
+}
+
+.value-card:hover::after {
+  transform: scaleX(1);
+}
+
+.value-icon {
+  width: 74px;
+  height: 74px;
+  border: 1px solid rgba(233,196,119,.3);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1.9rem;
+  margin: 0 auto 26px;
+  background: rgba(233,196,119,.045);
+  box-shadow: 0 0 25px rgba(233,196,119,.05);
+  transition: transform .5s,box-shadow .5s;
+}
+
+.value-card:hover .value-icon {
+  transform: translateY(-5px) rotate(8deg);
+  box-shadow: 0 0 35px rgba(233,196,119,.16);
+}
+
+.value-card h3 {
+  font-family: 'Cormorant Garamond',serif;
+  color: var(--gold);
+  font-size: 1.85rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.value-card p {
+  color: var(--muted);
+  font-size: .9rem;
+  line-height: 1.9;
+}
+
+/* CINEMATIC SECTION */
+
+#cinematic {
+  padding: 120px 20px 140px;
+  text-align: center;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center,rgba(68,49,91,.14),transparent 65%);
+}
+
+.cinema-symbol {
+  width: 130px;
+  height: 130px;
+  margin: 0 auto 35px;
+  border: 1px solid rgba(233,196,119,.23);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  position: relative;
+  font-size: 3rem;
+  animation: glow 4s ease-in-out infinite;
+}
+
+.cinema-symbol::before,
+.cinema-symbol::after {
+  content: "";
+  position: absolute;
+  inset: -13px;
+  border: 1px solid rgba(233,196,119,.1);
+  border-radius: 50%;
+  animation: orbit 12s linear infinite;
+}
+
+.cinema-symbol::after {
+  inset: -28px;
+  border-style: dashed;
+  animation-direction: reverse;
+}
+
+@keyframes orbit {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes glow {
+  50% {
+    box-shadow: 0 0 55px rgba(233,196,119,.13),
+                inset 0 0 30px rgba(233,196,119,.05);
+  }
+}
+
+.cinema-quote {
+  max-width: 850px;
+  margin: 0 auto;
+  font-family: 'Cormorant Garamond',serif;
+  font-size: clamp(2.2rem,5.4vw,4.5rem);
+  line-height: 1.22;
+  font-weight: 500;
+  color: var(--white);
+}
+
+.cinema-quote em {
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.cinema-sub {
+  max-width: 650px;
+  margin: 28px auto 0;
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: .98rem;
+}
+
+.replay-btn {
+  margin-top: 30px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--gold);
+  padding: 12px 23px;
+  cursor: pointer;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  font-size: .72rem;
+  transition: all .3s;
+}
+
+.replay-btn:hover {
+  background: rgba(233,196,119,.1);
+  border-color: var(--gold);
+}
+
+/* DEDICATION */
+
+#dedication {
+  padding: 110px 0 80px;
+}
+
+.dedication-frame {
+  max-width: 850px;
+  margin: 45px auto 0;
+  padding: 65px 20px;
+  border: 1px solid rgba(233,196,119,.25);
+  text-align: center;
+  position: relative;
+  background: linear-gradient(135deg,rgba(233,196,119,.035),rgba(255,255,255,.01));
+}
+
+.dedication-frame::before {
+  content: "✦";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%,-50%);
+  background: var(--bg);
+  padding: 0 15px;
+  color: var(--gold);
+  font-size: 1.4rem;
+}
+
+.dedication-small {
+  color: var(--muted);
+  font-size: .68rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.dedication-title {
+  font-family: 'Cormorant Garamond',serif;
+  font-size: clamp(2rem,5vw,3.3rem);
+  margin: 24px 0 35px;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.group-name {
+  font-family: 'Cormorant Garamond',serif;
+  font-size: clamp(4rem,10vw,7.5rem);
+  line-height: .95;
+  font-weight: 700;
+  color: var(--white);
+  text-shadow: 0 0 35px rgba(233,196,119,.13);
+}
+
+.section-name {
+  color: var(--gold);
+  font-size: clamp(.85rem,2vw,1.05rem);
+  letter-spacing: 9px;
+  margin-top: 20px;
+}
+
+.dedication-desc {
+  color: var(--muted);
+  font-size: .9rem;
+  margin-top: 35px;
+  letter-spacing: 1px;
+}
+
+/* FINAL CELEBRATION */
+
+#celebration {
+  min-height: 80svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 20px;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center,rgba(150,109,53,.1),transparent 65%);
+}
+
+.celebration-content {
+  position: relative;
+  z-index: 2;
+  max-width: 850px;
+}
+
+.celebration-star {
+  color: var(--gold);
+  font-size: 2.2rem;
+  display: block;
+  margin-bottom: 25px;
+  animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: .5;transform: scale(.9); }
+  to { opacity: 1;transform: scale(1.12); }
+}
+
+.celebration-title {
+  font-family: 'Cormorant Garamond',serif;
+  font-weight: 600;
+  font-size: clamp(3.2rem,9vw,7.5rem);
+  line-height: .98;
+  color: var(--gold);
+  text-shadow: 0 0 45px rgba(233,196,119,.17);
+}
+
+.celebration-text {
+  max-width: 630px;
+  margin: 30px auto 0;
+  color: #c2bdb7;
+  line-height: 2;
+  font-size: 1rem;
+}
+
+.back-top {
+  display: inline-flex;
+  margin-top: 38px;
+  padding: 13px 25px;
+  border: 1px solid rgba(233,196,119,.4);
+  color: var(--gold);
+  background: transparent;
+  font-size: .72rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.back-top:hover {
+  background: rgba(233,196,119,.1);
+  transform: translateY(-3px);
+}
+
+footer {
+  padding: 25px 15px;
+  text-align: center;
+  border-top: 1px solid rgba(233,196,119,.09);
+  color: #77736f;
+  font-size: .68rem;
+  letter-spacing: 1.5px;
+}
+
+footer span {
+  color: var(--gold);
+}
+
+/* REVEAL ANIMATIONS */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:760px) {
+  .values-grid {
+    grid-template-columns: 1fr;
+    max-width: 470px;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 17px;
+  }
+
+  .value-card {
+    padding: 35px 25px;
+  }
+
+  #appreciation,#values,#dedication {
+    padding-top: 85px;
+    padding-bottom: 90px;
+  }
+
+  #cinematic {
+    padding: 90px 20px 105px;
+  }
+
+  .message-card {
+    margin-top: 40px;
+  }
+
+  .hero-title {
+    letter-spacing: -1.5px;
+  }
+
+  .cursor-glow {
+    display: none;
+  }
+
+  .section-name {
+    letter-spacing: 6px;
+  }
+
+  .dedication-small {
+    letter-spacing: 3px;
+    line-height: 1.8;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- HERO SECTION -->
+
+<section id="hero">
+  <div class="hero-orb"></div>
+
+  <div class="hero-content">
+    <div class="hero-label" id="heroLabel">
+      A LITTLE TOKEN OF APPRECIATION
+    </div>
+
+    <h1 class="hero-title" id="heroTitle"></h1>
+
+    <p class="hero-description" id="heroDesc">
+      To all the amazing teachers who inspire us to learn,
+      grow, and become better every day.
+    </p>
+
+    <div class="hero-from" id="heroFrom">
+      GROUP 1 &nbsp;·&nbsp; M2 SECTION
+    </div>
+
+    <button class="primary-btn" id="messageBtn">
+      A Special Message <span>✦</span>
+    </button>
+  </div>
+
+  <div class="scroll-indicator">
+    <span>SCROLL TO EXPLORE</span>
+    <span>↓</span>
+  </div>
+</section>
+
+<!-- APPRECIATION SECTION -->
+
+<section id="appreciation">
+  <div class="container">
+
+    <div class="reveal" style="text-align:center">
+      <span class="eyebrow">FROM OUR HEARTS</span>
+
+      <h2 class="section-heading">
+        A Message of <span class="gold">Gratitude</span>
+      </h2>
+
+      <p class="section-sub">
+        Some words can never fully express the respect
+        and appreciation we have for all our teachers.
+      </p>
+    </div>
+
+    <div class="message-card reveal" id="messageCard">
+
+      <span class="card-corner tl"></span>
+      <span class="card-corner tr"></span>
+      <span class="card-corner bl"></span>
+      <span class="card-corner br"></span>
+
+      <span class="letter-icon">💌</span>
+
+      <h3 class="letter-title">Dear Respected Teachers,</h3>
+
+      <p class="letter-paragraph type-para"
+      data-text="On this special day, we want to express our heartfelt gratitude to all our respected teachers for their dedication, patience, and continuous guidance. Your knowledge, encouragement, and support inspire us to work harder, believe in ourselves, and achieve our goals."></p>
+
+      <p class="letter-paragraph type-para"
+      data-text="Each one of you has played a meaningful role in our academic journey. Thank you for sharing your wisdom, helping us overcome challenges, and teaching us lessons that go far beyond the classroom. Your words of encouragement will always motivate us to do better."></p>
+
+      <p class="letter-paragraph type-para"
+      data-text="We are truly grateful for your kindness, efforts, and commitment. Every lesson, every word of encouragement, and every moment of guidance will always remain a part of our lives. You are not just teachers but mentors who help shape our future."></p>
+
+      <p class="letter-paragraph type-para"
+      data-text="Thank you for believing in us, being patient with us, and guiding us towards a brighter future. We feel truly blessed to have learned from all of you."></p>
+
+      <div class="letter-sign">With heartfelt appreciation,</div>
+
+      <div class="gold" style="margin-top:8px;font-size:.76rem;letter-spacing:2px">
+        GROUP 1 — M2 SECTION
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPRECIATION CARDS -->
+
+<section id="values">
+  <div class="container">
+
+    <div class="reveal" style="text-align:center">
+      <span class="eyebrow">WHAT YOU MEAN TO US</span>
+
+      <h2 class="section-heading">
+        A Lasting <span class="gold">Impact</span>
+      </h2>
+
+      <p class="section-sub">
+        Every great teacher leaves behind something
+        more valuable than knowledge.
+      </p>
+    </div>
+
+    <div class="values-grid">
+
+      <article class="value-card reveal">
+        <div class="value-icon">📚</div>
+        <h3>Knowledge</h3>
+        <p>
+          Thank you for sharing your knowledge and
+          making learning meaningful. Every lesson
+          opens a new door to understanding.
+        </p>
+      </article>
+
+      <article class="value-card reveal">
+        <div class="value-icon">✨</div>
+        <h3>Inspiration</h3>
+        <p>
+          Your words motivate us to dream bigger,
+          overcome challenges, and believe in
+          ourselves and our abilities.
+        </p>
+      </article>
+
+      <article class="value-card reveal">
+        <div class="value-icon">💛</div>
+        <h3>Gratitude</h3>
+        <p>
+          Your patience, kindness, and guidance
+          will always be appreciated and
+          remembered with respect.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- CINEMATIC MESSAGE -->
+
+<section id="cinematic">
+  <div class="container reveal" id="cinemaContent">
+
+    <span class="eyebrow">A THOUGHT TO REMEMBER</span>
+
+    <div class="gold-line"></div>
+
+    <div class="cinema-symbol">🕯️</div>
+
+    <h2 class="cinema-quote" id="cinemaQuote">
+      Behind every successful student,
+      there are teachers who
+      <em>believe in them.</em>
+    </h2>
+
+    <p class="cinema-sub" id="cinemaSub">
+      Thank you for believing in us, guiding us,
+      and making a difference in our lives.
+    </p>
+
+    <button class="replay-btn" id="replayBtn">
+      ↻ &nbsp; REPLAY MESSAGE
+    </button>
+
+  </div>
+</section>
+
+<!-- GROUP DEDICATION -->
+
+<section id="dedication">
+  <div class="container">
+
+    <div class="reveal" style="text-align:center">
+      <span class="eyebrow">A DEDICATION FROM ALL OF US</span>
+
+      <h2 class="section-heading">
+        Made with <span class="gold">Respect</span>
+      </h2>
+    </div>
+
+    <div class="dedication-frame reveal">
+
+      <div class="dedication-small">
+        With Respect, Love & Gratitude
+      </div>
+
+      <div class="gold-line"></div>
+
+      <div class="group-name">GROUP 1</div>
+
+      <div class="section-name">M2 SECTION</div>
+
+      <p class="dedication-desc">
+        Dedicated to all our respected teachers
+      </p>
+
+      <div class="gold-line"></div>
+
+      <div style="color:var(--gold);font-size:1.4rem">
+        ✦ &nbsp; ✧ &nbsp; ✦
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CELEBRATION -->
+
+<section id="celebration">
+
+  <div class="celebration-content reveal" id="celebrationContent">
+
+    <span class="celebration-star">✦</span>
+
+    <div class="eyebrow" style="justify-content:center">
+      A DAY TO CELEBRATE YOU
+    </div>
+
+    <h2 class="celebration-title">
+      HAPPY<br>TEACHER'S DAY!
+    </h2>
+
+    <div class="gold-line"></div>
+
+    <p class="celebration-text">
+      Thank you to all our respected teachers for being
+      an important part of our journey. Your knowledge,
+      kindness, and lessons will stay with us forever. 💛
+
+      <br><br>
+
+      May your dedication continue to inspire generations,
+      and may you always receive the respect and
+      appreciation you deserve.
+    </p>
+
+    <button class="back-top" id="backTop">
+      BACK TO TOP ↑
+    </button>
+
+  </div>
+</section>
+
+<footer>
+  MADE WITH <span>♥</span> AND GRATITUDE
+  &nbsp;|&nbsp; GROUP 1 — M2 SECTION
+</footer>
+
+<script>
+(() => {
+  "use strict";
+
+  const reduceMotion =
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const $ = id => document.getElementById(id);
+  const gsapOK = typeof gsap !== "undefined";
+
+  // CURSOR GLOW
+
+  const glow = $("cursorGlow");
+
+  if (window.matchMedia("(pointer:fine)").matches && !reduceMotion) {
+    window.addEventListener("mousemove", e => {
+      glow.style.opacity = "1";
+      glow.style.left = e.clientX + "px";
+      glow.style.top = e.clientY + "px";
+    }, { passive:true });
+
+    document.addEventListener("mouseleave", () => {
+      glow.style.opacity = "0";
+    });
+  }
+
+  // TYPEWRITER EFFECT
+
+  function typeText(element, text, speed = 65, done = () => {}) {
+    if (!element) return;
+
+    if (reduceMotion) {
+      element.textContent = text;
+      done();
+      return;
+    }
+
+    let i = 0;
+    element.innerHTML =
+      '<span class="typed"></span><span class="cursor">|</span>';
+
+    const typed = element.querySelector(".typed");
+    const cursor = element.querySelector(".cursor");
+
+    function tick() {
+      if (i < text.length) {
+        const char = text.charAt(i++);
+        typed.textContent += char;
+
+        let delay = speed;
+
+        if (char === "," || char === ";") delay += 130;
+        if (char === "." || char === "!") delay += 220;
+
+        setTimeout(tick, delay);
+      } else {
+        if (cursor) cursor.remove();
+        done();
+      }
+    }
+
+    tick();
+  }
+
+  // HERO INTRO
+
+  const heroTitle = $("heroTitle");
+
+  function showHero() {
+    $("heroLabel").style.opacity = "1";
+    $("heroDesc").style.opacity = "1";
+    $("heroFrom").style.opacity = "1";
+    $("messageBtn").style.opacity = "1";
+    $("heroDesc").style.transform = "none";
+    $("messageBtn").style.transform = "none";
+  }
+
+  if (reduceMotion) {
+    heroTitle.innerHTML =
+      'Happy <span class="gold">Teacher\'s Day!</span>';
+    showHero();
+  } else if (gsapOK) {
+
+    gsap.timeline()
+      .to("#heroLabel", {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out"
+      })
+      .add(() => {
+        heroTitle.innerHTML =
+          '<span id="heroTyped"></span><span class="cursor">|</span>';
+
+        typeText(
+          $("heroTyped"),
+          "Happy Teacher's Day!",
+          80,
+          () => {
+            heroTitle.innerHTML =
+              'Happy <span class="gold">Teacher\'s Day!</span>';
+          }
+        );
+      }, "-=.2")
+      .to("#heroDesc", {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out"
+      }, "+=1.7")
+      .to("#heroFrom", {
+        opacity: 1,
+        duration: .8
+      }, "-=.4")
+      .to("#messageBtn", {
+        opacity: 1,
+        y: 0,
+        duration: .8
+      }, "-=.3");
+
+  } else {
+
+    setTimeout(() => {
+      $("heroLabel").style.opacity = "1";
+
+      typeText(heroTitle, "Happy Teacher's Day!", 80, () => {
+        heroTitle.innerHTML =
+          'Happy <span class="gold">Teacher\'s Day!</span>';
+
+        showHero();
+      });
+    }, 400);
+  }
+
+  // SCROLL BUTTONS
+
+  $("messageBtn").addEventListener("click", () => {
+    $("appreciation").scrollIntoView({
+      behavior: reduceMotion ? "auto" : "smooth"
+    });
+  });
+
+  $("backTop").addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: reduceMotion ? "auto" : "smooth"
+    });
+  });
+
+  // SCROLL REVEALS
+
+  const reveals = document.querySelectorAll(".reveal");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: .12,
+    rootMargin: "0px 0px -35px 0px"
+  });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // GSAP ANIMATIONS
+
+  if (gsapOK && !reduceMotion) {
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.utils.toArray(".value-card").forEach((card, i) => {
+      gsap.fromTo(card,
+        { y: 45, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: .85,
+          delay: i * .14,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 88%",
+            once: true
+          }
+        }
+      );
+    });
+
+    gsap.to(".hero-orb", {
+      rotation: 360,
+      duration: 100,
+      repeat: -1,
+      ease: "none"
+    });
+
+    gsap.to(".cinema-symbol", {
+      y: -8,
+      duration: 3,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+    });
+
+    gsap.fromTo(".dedication-frame",
+      { scale: .96 },
+      {
+        scale: 1,
+        duration: 1.2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".dedication-frame",
+          start: "top 85%",
+          once: true
+        }
+      }
+    );
+  }
+
+  // APPRECIATION LETTER TYPEWRITER
+
+  let letterStarted = false;
+
+  const letterObserver = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting && !letterStarted) {
+      letterStarted = true;
+
+      const paragraphs = [
+        ...document.querySelectorAll(".type-para")
+      ];
+
+      if (reduceMotion) {
+        paragraphs.forEach(p => {
+          p.textContent = p.dataset.text;
+        });
+        return;
+      }
+
+      let index = 0;
+
+      function nextParagraph() {
+        if (index >= paragraphs.length) return;
+
+        const p = paragraphs[index++];
+
+        typeText(p, p.dataset.text, 17, () => {
+          setTimeout(nextParagraph, 350);
+        });
+      }
+
+      nextParagraph();
+    }
+  }, { threshold: .2 });
+
+  letterObserver.observe($("messageCard"));
+
+  // 3D TILT EFFECT
+
+  if (
+    window.matchMedia("(pointer:fine)").matches &&
+    !reduceMotion
+  ) {
+    document.querySelectorAll(".value-card,#messageCard")
+      .forEach(card => {
+
+        card.addEventListener("mousemove", e => {
+          const r = card.getBoundingClientRect();
+
+          const x = (e.clientX - r.left) / r.width - .5;
+          const y = (e.clientY - r.top) / r.height - .5;
+
+          card.style.transform =
+            `perspective(900px) rotateX(${-y*4}deg) rotateY(${x*5}deg)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform =
+            "perspective(900px) rotateX(0) rotateY(0)";
+        });
+      });
+  }
+
+  // REPLAY CINEMATIC MESSAGE
+
+  const quote = $("cinemaQuote");
+  const sub = $("cinemaSub");
+
+  const quoteHTML =
+    'Behind every successful student, there are teachers who <em>believe in them.</em>';
+
+  const quoteText =
+    "Behind every successful student, there are teachers who believe in them.";
+
+  const subText =
+    "Thank you for believing in us, guiding us, and making a difference in our lives.";
+
+  $("replayBtn").addEventListener("click", () => {
+
+    if (reduceMotion) {
+      quote.innerHTML = quoteHTML;
+      sub.textContent = subText;
+      return;
+    }
+
+    quote.style.opacity = "0";
+    sub.style.opacity = "0";
+
+    setTimeout(() => {
+      quote.innerHTML = "";
+
+      quote.style.opacity = "1";
+
+      typeText(quote, quoteText, 45, () => {
+        quote.innerHTML = quoteHTML;
+        sub.textContent = subText;
+        sub.style.opacity = "1";
+      });
+    }, 350);
+  });
+
+  // PARTICLE BACKGROUND
+
+  const canvas = $("particles");
+  const ctx = canvas.getContext("2d");
+
+  let w, h, dpr;
+  let stars = [];
+  let raf;
+  let burst = [];
+
+  const isMobile = window.innerWidth < 700;
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    w = window.innerWidth;
+    h = window.innerHeight;
+
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+
+    canvas.style.width = w + "px";
+    canvas.style.height = h + "px";
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const count = reduceMotion ? 30 : (isMobile ? 45 : 100);
+
+    stars = Array.from({ length: count }, () => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      r: Math.random() * 1.5 + .3,
+      a: Math.random() * .55 + .12,
+      speed: Math.random() * .25 + .04,
+      phase: Math.random() * Math.PI * 2
+    }));
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+
+    const time = Date.now() * .001;
+
+    stars.forEach(s => {
+      const alpha =
+        s.a * (.55 + .45 * Math.sin(time * s.speed * 2 + s.phase));
+
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(232,195,119,${alpha})`;
+      ctx.fill();
+
+      if (!reduceMotion) {
+        s.y -= s.speed * .16;
+
+        if (s.y < 0) {
+          s.y = h;
+          s.x = Math.random() * w;
+        }
+      }
+    });
+
+    burst = burst.filter(p => p.life > 0);
+
+    burst.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += .025;
+      p.life -= 1;
+
+      ctx.save();
+
+      ctx.globalAlpha = Math.max(0, p.life / p.maxLife);
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rotation);
+
+      ctx.fillStyle = p.color;
+      ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size*1.6);
+
+      ctx.restore();
+    });
+
+    if (!reduceMotion || burst.length) {
+      raf = requestAnimationFrame(draw);
+    }
+  }
+
+  function startParticles() {
+    if (raf) cancelAnimationFrame(raf);
+    draw();
+  }
+
+  resize();
+  startParticles();
+
+  window.addEventListener("resize", () => {
+    resize();
+    startParticles();
+  }, { passive: true });
+
+  // FINAL CELEBRATION CONFETTI
+
+  let celebrated = false;
+
+  const celebrationObserver = new IntersectionObserver(entries => {
+
+    if (entries[0].isIntersecting && !celebrated) {
+      celebrated = true;
+
+      if (!reduceMotion) {
+
+        const colors = [
+          "#e9c477",
+          "#fff1c6",
+          "#b88a42",
+          "#d7c0ff",
+          "#ffffff"
+        ];
+
+        for (let i = 0; i < 130; i++) {
+
+          const angle = Math.random() * Math.PI * 2;
+          const velocity = Math.random() * 5 + 1.5;
+
+          burst.push({
+            x: w * (.15 + Math.random() * .7),
+            y: h * (.1 + Math.random() * .3),
+            vx: Math.cos(angle) * velocity,
+            vy: Math.sin(angle) * velocity - 2,
+            size: Math.random() * 5 + 2,
+            life: Math.random() * 100 + 70,
+            maxLife: 170,
+            rotation: Math.random() * 6,
+            color: colors[Math.floor(Math.random() * colors.length)]
+          });
+        }
+
+        startParticles();
+      }
+    }
+
+  }, { threshold: .25 });
+
+  celebrationObserver.observe($("celebration"));
+
+  // ACCESSIBLE ANCHOR SCROLLING
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener("click", e => {
+
+      const target = document.querySelector(a.getAttribute("href"));
+
+      if (target) {
+        e.preventDefault();
+
+        target.scrollIntoView({
+          behavior: reduceMotion ? "auto" : "smooth"
+        });
+      }
+    });
+  });
+
+})();
+</script>
+
+</body>
+</html>
